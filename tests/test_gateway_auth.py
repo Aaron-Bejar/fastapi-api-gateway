@@ -12,8 +12,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from fastapi.testclient import TestClient
 
-from gateway.main import app as gateway
 from gateway import main as gateway_module
+from gateway.main import app as gateway
 from services.products import main as products
 from services.users import main as users
 

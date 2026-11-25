@@ -142,3 +142,13 @@ python -m pytest -v
 ```
 
 Las pruebas generan sus propios pares de claves temporales y utilizan clientes dentro del proceso y un transporte HTTP simulado; no requieren servicios en ejecución ni archivos de claves locales. Cubren autenticación, propagación de identidad, autorización, suplantación de cabeceras, cierre de sesión, límite de peticiones y fallos del JWKS. La cuenta de demostración tiene el rol `user`; las pruebas de seguridad también comprueban un token firmado con el rol `customer`, que tampoco tiene permiso para crear productos.
+
+## Análisis estático y CI
+
+Con las dependencias de desarrollo instaladas, ejecuta el linter desde la raíz del proyecto:
+
+```powershell
+python -m ruff check .
+```
+
+Ruff comprueba errores de Python, nombres no definidos o importaciones sin usar y el orden de las importaciones. Las reglas seleccionadas están en `pyproject.toml`. En cada push y pull request, GitHub Actions ejecuta el mismo análisis y la suite de pruebas. El linter analiza el código sin ejecutarlo; las pruebas verifican comportamientos concretos.
